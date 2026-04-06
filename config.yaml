@@ -1,11 +1,10 @@
 # ╔══════════════════════════════════════╗
 # ║   Dropship Hunter  –  config.yaml   ║
 # ╚══════════════════════════════════════╝
-
 email:
-  sender: "krimmourad81@gmail.com"
-  app_password: "dgfu qpze myoe exqh"
-  recipient: "krimmourad81@gmail.com"
+  sender: "your_gmail@gmail.com"
+  app_password: "xxxx xxxx xxxx xxxx"
+  recipient: "your_email@example.com"
   smtp_host: "smtp.gmail.com"
   smtp_port: 587
   subject: "🏆 Top 10 Dropship Winners – {date}"
@@ -28,8 +27,6 @@ aliexpress:
     - "https://www.aliexpress.com/wholesale?SearchText=beauty+products&SortType=total_tranpro_desc"
     - "https://www.aliexpress.com/wholesale?SearchText=phone+accessories&SortType=total_tranpro_desc"
     - "https://www.aliexpress.com/wholesale?SearchText=kitchen+gadgets&SortType=total_tranpro_desc"
- sed -i 's/use_scraper_api: false/use_scraper_api: true/' config.yaml
-          sed -i 's/scraper_api_key: ""/scraper_api_key: "${{ secrets.SCRAPER_API_KEY }}"/' config.yaml
 scoring:
   demand_weight: 0.60
   competition_weight: 0.40
