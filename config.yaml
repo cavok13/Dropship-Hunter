@@ -3,46 +3,40 @@
 # ╚══════════════════════════════════════╝
 
 email:
-  sender: "your_gmail@gmail.com"          # Gmail address used to send
-  app_password: "xxxx xxxx xxxx xxxx"     # Gmail App Password (not login password)
-  recipient: "your_email@example.com"     # Where to receive the daily report
+  sender: "krimmourad81@gmail.com"
+  app_password: "dgfu qpze myoe exqh"
+  recipient: "krimmourad81@gmail.com"
   smtp_host: "smtp.gmail.com"
   smtp_port: 587
   subject: "🏆 Top 10 Dropship Winners – {date}"
-
 scraping:
-  use_scraper_api: false                  # Set true + add key to use ScraperAPI (avoids blocks)
+  use_scraper_api: false
   scraper_api_key: ""
-  request_delay: 3                        # Seconds between requests (be polite)
-  max_products_per_source: 60
-  user_agent_rotate: true
-  timeout: 20
-
-  categories:
-    amazon:
-      - zgbs/beauty               # Best Sellers Beauty
-      - zgbs/hpc                  # Health & Personal Care
-      - zgbs/home-garden          # Home & Kitchen
-      - zgbs/toys-and-games       # Toys & Games
-      - zgbs/sporting-goods       # Sports & Outdoors
-      - zgbs/pet-supplies         # Pet Supplies
-    aliexpress:
-      - 200001075   # Beauty & Health
-      - 200000606   # Home & Garden
-      - 200003655   # Sports & Entertainment
-      - 200001080   # Toys & Hobbies
-      - 200003356   # Phones & Accessories
-
+  request_delay: 3
+  render_js: true
+amazon:
+  start_urls:
+    - "https://www.amazon.com/best-sellers-beauty/zgbs/beauty/"
+    - "https://www.amazon.com/best-sellers-home-kitchen/zgbs/kitchen/"
+    - "https://www.amazon.com/best-sellers-sports-fitness/zgbs/sporting-goods/"
+    - "https://www.amazon.com/best-sellers-hpc/zgbs/hpc/"
+    - "https://www.amazon.com/best-sellers-toys-games/zgbs/toys-and-games/"
+    - "https://www.amazon.com/best-sellers-electronics/zgbs/electronics/"
+aliexpress:
+  start_urls:
+    - "https://www.aliexpress.com/wholesale?SearchText=home+decor&SortType=total_tranpro_desc"
+    - "https://www.aliexpress.com/wholesale?SearchText=beauty+products&SortType=total_tranpro_desc"
+    - "https://www.aliexpress.com/wholesale?SearchText=phone+accessories&SortType=total_tranpro_desc"
+    - "https://www.aliexpress.com/wholesale?SearchText=kitchen+gadgets&SortType=total_tranpro_desc"
 scoring:
-  demand_weight: 0.60            # Weight for demand signals
-  competition_weight: 0.40       # Weight for low-competition bonus
-  min_rating: 4.0                # Ignore products below this rating
-  min_reviews: 30                # Ignore products with fewer reviews
-  min_orders: 100                # Minimum order count (AliExpress)
+  demand_weight: 0.60
+  competition_weight: 0.40
+  min_rating: 4.0
+  min_reviews: 30
+  min_orders: 100
   price_range:
-    min: 5                       # USD – skip ultra-cheap junk
-    max: 150                     # USD – skip luxury out of reach
-
+    min: 5
+    max: 150
 scheduling:
-  run_time: "08:00"              # Daily run time (24h, server local time)
-  timezone: "Africa/Algiers"     # Your timezone
+  run_time: "08:00"
+  timezone: "Africa/Algiers"
