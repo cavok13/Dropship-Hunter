@@ -15,8 +15,7 @@ jobs:
           python-version: '3.11'
           
       - name: Install dependencies
-        run: pip install -r requirements.txt
-        
+        run:  pip install -r requirements.txt httpx[http2]
       - name: Update config with secrets
         run: |
           sed -i 's/sender: "your_gmail@gmail.com"/sender: "${{ secrets.GMAIL_EMAIL }}"/' config.yaml
