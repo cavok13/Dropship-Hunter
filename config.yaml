@@ -1,41 +1,80 @@
 # ╔══════════════════════════════════════╗
 # ║   Dropship Hunter  –  config.yaml   ║
 # ╚══════════════════════════════════════╝
-email:
-  sender: "your_gmail@gmail.com"
-  app_password: "xxxx xxxx xxxx xxxx"
-  recipient: "your_email@example.com"
-  smtp_host: "smtp.gmail.com"
-  smtp_port: 587
-  subject: "🏆 Top 10 Dropship Winners – {date}"
+
+# ╔══════════════════════════════════════════════════════╗
+# ║           Dropship Hunter — config.yaml              ║
+# ║           Updated & Fixed Version 2026               ║
+# ╚══════════════════════════════════════════════════════╝
+
+# ── ScraperAPI (مجاني من scraperapi.com) ──────────────────────────────────────
 scraping:
-  use_scraper_api: false
-  scraper_api_key: ""
+  use_scraper_api: true
+  scraperapi_key: "bc3c41b9a1d851b7793b21ce0b0dcac2"   # ← ضع مفتاحك هنا
+  scraper_api_key: "bc3c41b9a1d851b7793b21ce0b0dcac2"  # ← نفس المفتاح (للتوافق)
   request_delay: 3
   render_js: true
+
+# ── Amazon Best Sellers URLs (الصحيحة 2026) ───────────────────────────────────
 amazon:
+  enabled: true
   start_urls:
-    - "https://www.amazon.com/best-sellers-beauty/zgbs/beauty/"
-    - "https://www.amazon.com/best-sellers-home-kitchen/zgbs/kitchen/"
-    - "https://www.amazon.com/best-sellers-sports-fitness/zgbs/sporting-goods/"
-    - "https://www.amazon.com/best-sellers-hpc/zgbs/hpc/"
-    - "https://www.amazon.com/best-sellers-toys-games/zgbs/toys-and-games/"
-    - "https://www.amazon.com/best-sellers-electronics/zgbs/electronics/"
+    - "https://www.amazon.com/Best-Sellers-Beauty/zgbs/beauty/"
+    - "https://www.amazon.com/Best-Sellers-Health-Personal-Care/zgbs/hpc/"
+    - "https://www.amazon.com/Best-Sellers-Home-Kitchen/zgbs/kitchen/"
+    - "https://www.amazon.com/Best-Sellers-Sports-Outdoors/zgbs/sporting-goods/"
+    - "https://www.amazon.com/Best-Sellers-Toys-Games/zgbs/toys-and-games/"
+    - "https://www.amazon.com/Best-Sellers-Electronics/zgbs/electronics/"
+    - "https://www.amazon.com/Best-Sellers-Pet-Supplies/zgbs/pet-supplies/"
+
+# ── AliExpress Search URLs (مرتبة بالأكثر مبيعاً) ────────────────────────────
 aliexpress:
+  enabled: true
   start_urls:
     - "https://www.aliexpress.com/wholesale?SearchText=home+decor&SortType=total_tranpro_desc"
-    - "https://www.aliexpress.com/wholesale?SearchText=beauty+products&SortType=total_tranpro_desc"
-    - "https://www.aliexpress.com/wholesale?SearchText=phone+accessories&SortType=total_tranpro_desc"
     - "https://www.aliexpress.com/wholesale?SearchText=kitchen+gadgets&SortType=total_tranpro_desc"
+    - "https://www.aliexpress.com/wholesale?SearchText=phone+accessories&SortType=total_tranpro_desc"
+    - "https://www.aliexpress.com/wholesale?SearchText=beauty+tools&SortType=total_tranpro_desc"
+    - "https://www.aliexpress.com/wholesale?SearchText=pet+supplies&SortType=total_tranpro_desc"
+    - "https://www.aliexpress.com/wholesale?SearchText=fitness+equipment&SortType=total_tranpro_desc"
+    - "https://www.aliexpress.com/wholesale?SearchText=car+accessories&SortType=total_tranpro_desc"
+
+# ── Scoring Algorithm ──────────────────────────────────────────────────────────
 scoring:
-  demand_weight: 0.60
-  competition_weight: 0.40
-  min_rating: 4.0
-  min_reviews: 30
-  min_orders: 100
-  price_range:
-    min: 5
-    max: 150
+  demand_weight: 0.60       # 60% demand score
+  opportunity_weight: 0.40  # 40% opportunity score
+  min_price: 10             # أقل سعر مقبول ($)
+  max_price: 80             # أعلى سعر مقبول ($)
+  min_rating: 3.5           # أقل تقييم مقبول
+  min_reviews: 50           # أقل عدد تقييمات
+  top_n: 10                 # عدد الفائزين في الإيميل
+
+# ── Email التقرير اليومي ────────────────────────────────────────────────────────
+email:
+  enabled: true
+  sender: "krimmourad81@gmail.com"
+  app_password: "dgfu qpze myoe exqh"   # Gmail App Password
+  recipient: "krimmourad81@gmail.com"
+  smtp_host: "smtp.gmail.com"
+  smtp_port: 587
+  subject: "🏆 Top {n} Dropship Winners — {date}"
+
+# ── WooCommerce (اختياري) ──────────────────────────────────────────────────────
+woocommerce:
+  enabled: false                          # ← غيّر إلى true عند الاستعداد
+  store_url: "https://your-site.com"
+  consumer_key: "ck_xxxxxxxxxxxxxxxxxxxx"
+  consumer_secret: "cs_xxxxxxxxxxxxxxxxxxxx"
+  create_status: "draft"                  # draft أو publish
+  daily_limit: 5
+  margin_multiplier: 2.2
+
+# ── Scheduler ─────────────────────────────────────────────────────────────────
 scheduling:
-  run_time: "08:00"
-  timezone: "Africa/Algiers"
+  run_time: "08:00"       # وقت التشغيل اليومي
+  timezone: "Europe/Paris"
+
+# ── Database ─────────────────────────────────────────────────────────────────
+storage:
+  db_path: "data/dropship_hunter.db"
+  history_days: 30        # احفظ سجل 30 يوم
