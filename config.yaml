@@ -29,7 +29,7 @@ amazon:
 
 # ── AliExpress Search URLs (مرتبة بالأكثر مبيعاً) ────────────────────────────
 aliexpress:
-  enabled: true
+  enabled: false
   start_urls:
     - "https://www.aliexpress.com/wholesale?SearchText=home+decor&SortType=total_tranpro_desc"
     - "https://www.aliexpress.com/wholesale?SearchText=kitchen+gadgets&SortType=total_tranpro_desc"
